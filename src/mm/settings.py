@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     # My Own
     'users',
     'business',
+    'memer',
 ]
 
 MIDDLEWARE = [

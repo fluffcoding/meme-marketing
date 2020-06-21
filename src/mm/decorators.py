@@ -8,4 +8,4 @@ def group_required(*group_names):
                 return True
         return False
 
-    return user_passes_test(in_groups, login_url='/')
+    return user_passes_test(in_groups, login_url='/not-authorized')
