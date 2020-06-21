@@ -39,5 +39,6 @@ class Campaign(models.Model):
     number_of_memes = models.CharField(choices=MEME_CHOICES,max_length=3, null=True)
     running = models.BooleanField(default=False)
 
+
     def __str__(self):
         return f'{self.user} - {self.title}'
