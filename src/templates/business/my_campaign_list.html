@@ -1,6 +1,11 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
 <h2> Campaign List Page </h2>
 {% for campaign in campaigns %}
 <ul>
     <li> <a href="/business/campaign/{{campaign.id}}"> {{ campaign.title }}</li></a>
 <ul>
 {% endfor %}
+{% endblock content %}

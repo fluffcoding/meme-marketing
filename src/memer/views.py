@@ -17,9 +17,13 @@ def active_campaigns_view(request):
 
 @group_required('Memer')
 def post_memes_for_campaign(request, id):
+    # Get campaign
     campaign = get_object_or_404(Campaign, id=id)
+    # Create or get Meme under the campaign
     meme_object, created = Meme.objects.get_or_create(campaign=campaign,memer=request.user)
+    # Obtain all previously uploaded images
     meme_images = meme_object.memerconnect.all()
+    # Form for uploading new images
     meme_submit_form = MemeSubmissionForm(request.POST or None, request.FILES or None)
     if meme_submit_form.is_valid():
         parent_meme, created = Meme.objects.get_or_create(campaign=campaign,memer=request.user)
@@ -28,7 +32,7 @@ def post_memes_for_campaign(request, id):
         return redirect('/')
     context = {
         #'campaign': campaign,
-        #'meme': meme_object,
+        'meme': meme_object,
         'meme_images': meme_images,
         'form': meme_submit_form,
     }
