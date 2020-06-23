@@ -1,0 +1,15 @@
+<button><a href="/memers/active-campaigns/">Back to active campaigns</a></button>
+<h2>{{ campaign.title }}</h2>
+<p>{{ campaign.description }}</p>
+<form method="POST" enctype="multipart/form-data">
+{% csrf_token %}
+{{ form }}
+<button type="submit">Submit</submit></button>
+</form>
+{% if meme_images %}
+<h3> Your submissions </h3>
+{% endif %}
+{% for m in meme_images %}
+{{ m.meme.memer }}<br>
+<img src="{{ m.image.url }}" width=500px></src>
+{% endfor %}

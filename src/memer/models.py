@@ -8,19 +8,12 @@ User = get_user_model()
 class Meme(models.Model):
     campaign = models.ForeignKey(Campaign, on_delete=models.CASCADE)
     memer = models.ForeignKey(User, on_delete=models.CASCADE)
-    #meme_image = models.ImageField(upload_to='/memes/')
-    score = models.IntegerField(default=0)
-
-    def __str__(self):
-        return str(self.meme.campaign.name) + self.memer.email
+    score = models.IntegerField(default=0,null=True, blank=True)
 
 
 class MemeImages(models.Model):
-    meme = models.ForeignKey(Meme, on_delete=models.CASCADE)
+    parent_meme = models.ForeignKey(Meme, on_delete=models.CASCADE, null=True, related_name='memerconnect')
     image = models.ImageField(upload_to='memes/')
 
     class Meta:
         verbose_name_plural = 'Meme Images'
-
-    def __str__(self):
-        return str(self.meme.campaign.name) + self.memer.email + self.id
