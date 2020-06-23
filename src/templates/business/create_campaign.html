@@ -1,5 +1,24 @@
 {% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
 {% block content %}
+
+<h4 class="text-center" ><span class="badge badge-secondary">1</span> Campaign basics - 
+    <span class="badge badge-secondary">2</span> Select platforms  - 
+    <span class="badge badge-secondary">3</span> Content creation service 
+</h4>
+<div class="progress">
+  <div class="progress-bar bg-secondary" role="progressbar" 
+  {% if wizard.steps.step1 == 1 %}
+  style="width: 25%" aria-valuenow="25"
+  {% elif wizard.steps.step1 == 2 %}
+  style="width: 50%" aria-valuenow="50"
+  {% elif wizard.steps.step1 == 3 %}
+  style="width: 75%" aria-valuenow="75"
+  {% endif %}
+   aria-valuemin="0" aria-valuemax="100"></div>
+</div>
 
 <p>Step {{ wizard.steps.step1 }} of {{ wizard.steps.count }}</p>
 
@@ -9,16 +28,19 @@
     {% if wizard.form.forms %}
         {{ wizard.form.management_form }}
         {% for form in wizard.form.forms %}
-            {{ form }}
+            {{ form|crispy }}
         {% endfor %}
         {% else %}
-        {{ wizard.form }}
+        {{ wizard.form|crispy }}
     {% endif %}
     </table>
+  <div class="btn-group" role="group" aria-label="Basic example">
     {% if wizard.steps.prev %}
-    <button name="wizard_goto_step" type="submit" value="{{ wizard.steps.first }}">first step</button>
-    <button name="wizard_goto_step" type="submit" value="{{ wizard.steps.prev }}">prev step</button>
+    <button class="btn btn-secondary" name="wizard_goto_step" type="submit" value="{{ wizard.steps.prev }}">Back</button>
     {% endif %}
-    <input type="submit" value="Next"/>
+    <input class="btn btn-success" type="submit" value="Next"/>
+    </div>
+
   </form>
+
 {% endblock content %}

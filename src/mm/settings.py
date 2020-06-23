@@ -48,6 +48,8 @@ INSTALLED_APPS = [
 
     'formtools',
 
+    'crispy_forms',
+
     # My Own
     'users',
     'business',
@@ -161,3 +163,5 @@ LOGIN_REDIRECT_URL = '/'
 # Uses Custom Signup Form
 #ACCOUNT_FORMS = {'signup': 'users.forms.NewSignupForm'}
 
+# Crispy Forms
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
