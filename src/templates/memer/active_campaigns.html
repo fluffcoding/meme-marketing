@@ -1,3 +1,7 @@
+{% extends 'base.html' %}
+
+{% block content %}
 {% for campaign in campaigns %}
 <a href="/memers/campaign/{{campaign.id}}/">{{ campaign.title }}</a>
 {% endfor %}
+{% endblock content %}

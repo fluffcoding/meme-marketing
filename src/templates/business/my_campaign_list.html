@@ -2,10 +2,20 @@
 
 
 {% block content %}
-<h2> Campaign List Page </h2>
-{% for campaign in campaigns %}
-<ul>
-    <li> <a href="/business/campaign/{{campaign.id}}"> {{ campaign.title }}</li></a>
-<ul>
+<h2> My Campaigns </h2>
+<div class="row">
+    {% for campaign in campaigns %}
+        <div class="col-3">
+            <div class="card m-3" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title"><a href="/business/campaign/{{campaign.id}}">{{ campaign.title }}</a></h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Budget: <b>{{ campaign.budget }}</b></h6>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="card-link">Card link</a>
+                    <a href="#" class="card-link">Another link</a>
+                </div>
+            </div>
+        </div>
 {% endfor %}
+</div>
 {% endblock content %}
