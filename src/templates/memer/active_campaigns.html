@@ -1,7 +1,16 @@
 {% extends 'base.html' %}
 
 {% block content %}
+{% if campaigns %}
+    <h1> Active Campaigns </h1>
+{% else %}
+    <h3> No campaigns available </h3>
+{% endif %}
 {% for campaign in campaigns %}
-<a href="/memers/campaign/{{campaign.id}}/">{{ campaign.title }}</a>
+<div class="card mt-2">
+  <div class="card-body">
+    <a href="/memers/campaign/{{campaign.id}}/">{{ campaign.title }}</a>
+  </div>
+</div>
 {% endfor %}
 {% endblock content %}
