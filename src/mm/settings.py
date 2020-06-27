@@ -158,7 +158,7 @@ ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_VERIFICATION = 'none'
-LOGIN_REDIRECT_URL = '/business/create/'
+LOGIN_REDIRECT_URL = '/redirect/'
 LOGIN_URL = '/accounts/login/'
 
 # Uses Custom Signup Form

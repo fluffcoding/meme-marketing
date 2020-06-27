@@ -1,14 +1,25 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponse
 from django.contrib.auth.decorators import login_required
+
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
 
 def not_authorized(request):
     return render(request, 'not_authorized.html', {})
 
-"""@login_required
+
 def index(request):
-    if request.user.groups.filter(name='business').exists():
-        return redirect('/business/campaigns')
-    if request.user.groups.filter(name='memer').exists():
-        return redirect('/memer/active-campaigns')
+    return redirect('/accounts/login')
+
+
+def user_group_specific_redirect(request):
+    user_groups = request.user.groups.all()
+    
+    if user_groups:
+        if str(user_groups[0]) == 'Business':
+            return redirect('business:my-campaigns')
+        elif str(user_groups[0]) == 'Memer':
+            return redirect('memer:active-campaigns')
     else:
-        return redirect('/choose-group')"""
+        return HttpResponse('Choose group')
