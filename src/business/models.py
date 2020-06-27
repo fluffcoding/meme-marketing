@@ -42,3 +42,14 @@ class Campaign(models.Model):
 
     def __str__(self):
         return f'{self.user} - {self.title}'
+
+
+    @property
+    def est_views(self):
+        est_views_var = 0
+        for counter, services in enumerate(self.services):
+            est_views_var += float(services)
+            last_count = counter + 1
+        est_views_var = est_views_var/last_count
+        return self.budget/est_views_var
+            

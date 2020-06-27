@@ -22,6 +22,7 @@ class CreateCampaignView(SessionWizardView):
         obj.save()
         return render(self.request, 'business/done.html',{
             'form_data': [form.cleaned_data for form in form_list],
+            'obj': obj,
         })
 
 @group_required('Business')

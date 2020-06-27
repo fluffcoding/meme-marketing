@@ -3,21 +3,22 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
+<h1> Create a campaign </h1><br>
 {% if wizard.steps.step1 == 1 %}
-<h4 class="text-center" ><span class="badge badge-secondary">1</span> Campaign basics - 
+<h5 class="text-center" ><span class="badge badge-secondary">1</span> Campaign basics - 
     <span class="badge badge-secondary">2</span> Select platforms  - 
     <span class="badge badge-secondary">3</span> Content creation service 
-</h4>
+</h5>
 {% elif wizard.steps.step1 == 2 %}
-<h4 class="text-center" ><span class="badge badge-success">1</span><span class=" text-success"> Campaign basics</span> - 
+<h5 class="text-center" ><span class="badge badge-success">1</span><span class=" text-success"> Campaign basics</span> - 
     <span class="badge badge-secondary">2</span> Select platforms  - 
     <span class="badge badge-secondary">3</span> Content creation service 
-</h4>
+</h5>
 {% elif wizard.steps.step1 == 3 %}
-<h4 class="text-center" ><span class="badge badge-success">1</span> <span class=" text-success">Campaign basics</span> - 
+<h5 class="text-center" ><span class="badge badge-success">1</span> <span class=" text-success">Campaign basics</span> - 
     <span class="badge badge-success">2</span> <span class=" text-success">Select platforms</span>  - 
     <span class="badge badge-secondary">3</span> Content creation service 
-</h4>
+</h5>
 {% endif %}
 
 <div class="progress">
